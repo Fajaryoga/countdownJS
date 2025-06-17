@@ -1,31 +1,45 @@
-<div id="countdown" style="
-  font-size: 28px;
-  color: red;
-  text-align: center;
-  padding: 15px;
-  background: #FFF9C4;
-  border-radius: 10px;
-  font-family: Arial;
-"></div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'">
+    <title>Countdown Timer</title>
+    <style>
+        #countdown {
+            font-size: 28px;
+            color: #FF0000;
+            text-align: center;
+            padding: 20px;
+            background: #FFF9C4;
+            border-radius: 10px;
+            font-family: Arial;
+            margin: 50px auto;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown">Loading...</div>
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date("2025-12-31T23:59:59").getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-<script>
-  function updateCountdown() {
-    const targetDate = new Date("2025-12-31 23:59:59").getTime(); // Ganti tanggal ini!
-    const now = new Date().getTime();
-    const distance = targetDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("countdown").innerHTML = 
+                `⏳ <b>${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik</b> Lagi`;
 
-    document.getElementById("countdown").innerHTML = 
-      ⏳ <b>${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik</b> Lagi;
-
-    if (distance < 0) {
-      document.getElementById("countdown").innerHTML = "🎉 <b>Waktu Habis!</b> 🎉";
-    }
-  }
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-</script>
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "🎉 <b>Waktu Habis!</b> 🎉";
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
