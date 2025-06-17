@@ -32,7 +32,7 @@
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             document.getElementById("countdown").innerHTML = 
-                `⏳ <b>${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik</b> Lagi`;
+                `Batas pengumpulan dokumen ATP dan MA tinggal ⏳ <b>${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik</b> Lagi`;
 
             if (distance < 0) {
                 document.getElementById("countdown").innerHTML = "🎉 <b>Waktu Habis!</b> 🎉";
